@@ -1,0 +1,32 @@
+{
+  "name": "oauth.server",
+  "version": "0.0.9",
+  "description": "An node js abstract implementation of an OAuth server that can be implemented with any kind of persistence and can be embedded in any web frameworks.",
+  "main": "distribution/main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JemsFramework/oauth.server.git"
+  },
+  "keywords": [
+    "oauth",
+    "oauth2",
+    "authentication",
+    "authorizarion",
+    "scope",
+    "security"
+  ],
+  "author": "Francisco Mercedes <franciscomerdot@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JemsFramework/oauth.server/issues"
+  },
+  "homepage": "https://github.com/JemsFramework/oauth.server#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-typescript": "^3.1.5",
+    "typescript": "^2.2.1"
+  }
+}
