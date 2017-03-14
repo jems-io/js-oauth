@@ -1,5 +1,5 @@
-# OAuth Server
+# OAuth Server (Node.js)
 #### by JemsFramework
-Frnacisco Mercedes <franciscomerdot@gmail.com>
+Francisco Mercedes <franciscomerdot@gmail.com>
 
-An abstract implementation of an OAuth server that can be implemented with any kind of persistence and can be embedded in any web frameworks.
+An node js abstract implementation of an OAuth server  that can be implemented with any kind of persistence and can be embedded in any web frameworks.
