@@ -1,12 +1,13 @@
 import { User } from '../Models/Persistents/User'
 
+/**
+ * Represents an user repository to persists users.
+ */
 export interface IUserRepository {
-
-    getAll():Promise<Array<User>>;
-
-    getList(name:string, limit:number, offset:number):Promise<Array<User>>;
     
-    getById(id:string):Promise<User>;
-
-    save(client:User):Promise<void>;
+    /**
+     * Get an user instance by a given name.
+     * @param username Represent the user name to look for.
+     */
+    getByName(username:string):Promise<User>;
 }
