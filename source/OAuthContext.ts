@@ -25,5 +25,6 @@ export class OAuthContext {
         this._configuration.refreshTokenExpirationTime = null;
         this._configuration.authorizationCodeExpirationTime = 30;
         this._configuration.mustGenerateRefreshToken = false;
+        this._configuration.tokenLength = 20;
     }
 }

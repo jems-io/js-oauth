@@ -22,4 +22,9 @@ export class OAuthContextConfiguration {
      * Get or set a boolean value specifying if the token generation process must create an refresh token;
      */
     public mustGenerateRefreshToken:boolean;
+
+    /**
+     * Get or set the length of the generated tokens.
+     */
+    public tokenLength:number;
 }

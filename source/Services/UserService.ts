@@ -22,7 +22,7 @@ export class UserService implements IUserService {
      * @param username Represents the user name.
      * @param password Represents the user password.
      */ 
-    public async validateCredential(username: string, password: string): Promise<boolean> {
+    public async validateCredentials(username: string, password: string): Promise<boolean> {
         
         let user:User = await this._userRepository.getByName(username);
 

@@ -30,6 +30,8 @@
     "typescript": "^2.2.1"
   },
   "dependencies": {
-    "randomstring": "^1.1.5"
+    "inversify": "^3.1.0",
+    "randomstring": "^1.1.5",
+    "reflect-metadata": "^0.1.10"
   }
 }

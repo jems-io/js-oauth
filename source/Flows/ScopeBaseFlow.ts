@@ -28,5 +28,5 @@ export abstract class ScopeBaseFlow extends BaseFlow {
      * Execute the flow and handle it with the given handler.
      * @param handler Represents the handler for the flow.
      */
-    public abstract execute(handler:IFlowHandler):void;
+    public abstract execute(handler:IFlowHandler):Promise<void>;
 }

@@ -17,6 +17,8 @@ export class TokenService implements ITokenService {
     /**
      * Create a new instance of the token service.
      * @param tokenRepository Represents the token repository to consult and persist tokens.
+     * @param tokenGenerationService Represents the token generation service to generate tokens values.
+     * @param oAuthContext Represents the OAuth context that containing the default configurations for common objects.
      */    
     constructor(tokenRepository:ITokenRepository
                ,tokenGenerationService:ITokenGenerationService

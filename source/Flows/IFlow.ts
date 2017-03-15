@@ -7,5 +7,5 @@ export interface IFlow {
     /**
      * Execute the flow and handle it with the given handler.
      */
-    execute(handler:IFlowHandler):Promise<void>
+    execute(handler:IFlowHandler):Promise<void>;
 }

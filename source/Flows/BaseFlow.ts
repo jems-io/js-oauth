@@ -10,7 +10,7 @@ export abstract class BaseFlow implements IFlow {
      * @param type Represents the type of the flow processor.
      */
     constructor(type:string) {
-        this._type = type;
+        this._type = type;        
     }
 
     private _type:string;
@@ -29,5 +29,5 @@ export abstract class BaseFlow implements IFlow {
      * Execute the flow and handle it with the given handler.
      * @param handler Represents the handler for the flow.
      */
-    public abstract execute(handler:IFlowHandler):void;
+    public abstract execute(handler:IFlowHandler):Promise<void>;
 }
