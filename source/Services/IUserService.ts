@@ -3,9 +3,9 @@
  */
 export interface IUserService {
     /**
-     * Returns a boolean value specifying if the user credential are valid.
+     * Validate the credentials of the user.
      * @param username Represents the user name.
      * @param password Represents the user password.
      */ 
-    validateCredentials(username:string, password:string):Promise<boolean>;
+    validateCredentials(username:string, password:string):Promise<void>;
 }

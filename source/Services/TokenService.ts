@@ -1,9 +1,9 @@
 import { Token } from '../Models/Persistents/Token'
-import { RefreshToken } '../Models/Persistents/RefreshToken'
 import { ITokenService } from './ITokenService'
 import { ITokenRepository } from '../Repositories/ITokenRepository'
-import { ITokenGenerationService } from './ITokenGenerationService'
 import { OAuthContext } from '../OAuthContext'
+import { RefreshToken } from "../Models/Persistents/RefreshToken";
+import { IIdentifierGenerationService } from './IIdentifierGenerationService'
 
 /**
  * Represents a token service.
@@ -11,7 +11,7 @@ import { OAuthContext } from '../OAuthContext'
 export class TokenService implements ITokenService {    
 
     private _tokenRepository:ITokenRepository;
-    private _tokenGenerationService:ITokenGenerationService;
+    private _tokenGenerationService:IIdentifierGenerationService;
     private _oAuthContext:OAuthContext;
 
     /**
@@ -21,7 +21,7 @@ export class TokenService implements ITokenService {
      * @param oAuthContext Represents the OAuth context that containing the default configurations for common objects.
      */    
     constructor(tokenRepository:ITokenRepository
-               ,tokenGenerationService:ITokenGenerationService
+               ,tokenGenerationService:IIdentifierGenerationService
                ,oAuthContext:OAuthContext) {
 
         this._tokenRepository = tokenRepository;

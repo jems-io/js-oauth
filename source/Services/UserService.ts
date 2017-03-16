@@ -1,6 +1,7 @@
 import { User } from '../Models/Persistents/User'
 import { IUserService } from './IUserService'
 import { IUserRepository } from '../Repositories/IUserRepository'
+import { OAuthError } from "../OAuthError";
 
 /**
  * Represent an user service.
@@ -18,14 +19,16 @@ export class UserService implements IUserService {
     }
 
     /**
-     * Returns a boolean value specifying if the user credential are valid.
+     * Validate the credentials of the user.
      * @param username Represents the user name.
      * @param password Represents the user password.
      */ 
-    public async validateCredentials(username: string, password: string): Promise<boolean> {
+    public async validateCredentials(username: string, password: string): Promise<void> {
         
         let user:User = await this._userRepository.getByName(username);
 
-        return user && user.password === password;
+        if (user && user.password === password) {
+            throw new OAuthError('TODO:PutCode', 'The provided user credentials are invalid.');
+        }
     }
 }

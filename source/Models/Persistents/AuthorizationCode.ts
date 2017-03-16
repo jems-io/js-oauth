@@ -1,4 +1,5 @@
 import { Client } from "./Client";
+import { Token } from "./Token";
 
 /**
  * Represents an authorization code.
@@ -22,7 +23,7 @@ export class AuthorizationCode {
     /**
      * Get or set the token generated with the coded;
      */
-    public token:string;
+    public token:Token;
 
     /**
      * Get or set the date when the code was created.

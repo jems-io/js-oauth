@@ -38,10 +38,18 @@ export class ClientCredetialFlow extends BaseFlow {
      * @param handle Represents the handler.
      */
     public async resolve(handler:IFlowHandler):Promise<boolean> {
-        if (!super.resolve(handler) && this._clientService.validateCredentials(this.clientId, this.clientSecret)) {
-            handler.returnResult(await this._flowResultBuilder.getResult());
+
+         if (!super.resolve(handler)) {
+            try {
+                await this._clientService.validateCredentials(this.clientId, this.clientSecret);
+                handler.returnResult(await this._flowResultBuilder.getResult());
+            }
+            catch(ex) {
+                if (!this.resolveError(ex, handler))
+                    throw ex;
+            }
         }
         else
-            return false;   
+            return true; 
     }
 }

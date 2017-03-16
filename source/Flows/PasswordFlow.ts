@@ -7,6 +7,7 @@ import { IUserService } from "../Services/IUserService";
 import { FlowError } from "../Models/FlowError";
 import { IFlowResultBuilder } from "../IFlowResultBuilder";
 import { IClientService } from "../Services/IClientService";
+import { OAuthError } from "../OAuthError";
 
 
 /**
@@ -17,7 +18,6 @@ export class PasswordFlow extends BaseFlow {
     private _userService:IUserService;    
     private _clientService:IClientService;
     private _flowResultBuilder:IFlowResultBuilder;
-
 
     /**
      * Create a new instance of password flow class.
@@ -50,11 +50,18 @@ export class PasswordFlow extends BaseFlow {
      */
     public async resolve(handler:IFlowHandler):Promise<boolean> {
       
-        if (!super.resolve(handler) && await this._userService.validateCredentials(this.username, this.password)) {
-            handler.returnResult(await this._flowResultBuilder.getResult());
+        if (!super.resolve(handler)) {
+            try {
+                await this._userService.validateCredentials(this.username, this.password);
+                handler.returnResult(await this._flowResultBuilder.getResult());
+            }
+            catch(ex) {
+                if (!this.resolveError(ex, handler))
+                    throw ex;
+            }
         }
         else
-            return false;
+            return true;
 
     }
 }

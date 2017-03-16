@@ -1,12 +1,19 @@
 import { AuthorizationCode } from '../Models/Persistents/AuthorizationCode'
 
-export interface IUserRepository {
+/**
+ * Represents a authorization code repository to persists authorization codes.
+ */
+export interface IAuthorizationCodeRepository {
 
-    getAll():Promise<Array<AuthorizationCode>>;
+    /**
+     * Returns an authorization code by the given code.
+     * @param code Represents the code to look for.
+     */
+    getByCode(code:string):Promise<AuthorizationCode>;
 
-    getList(name:string, limit:number, offset:number):Promise<Array<AuthorizationCode>>;
-    
-    getById(id:string):Promise<AuthorizationCode>;
-
-    save(client:AuthorizationCode):Promise<void>;
+    /**
+     * Save or update authorization code instances.
+     * @param authorization Represents the authorization code instance that will be saved or updated.
+     */
+    save(authorizationClient:AuthorizationCode):Promise<void>;
 }

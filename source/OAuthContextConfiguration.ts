@@ -27,4 +27,9 @@ export class OAuthContextConfiguration {
      * Get or set the length of the generated tokens.
      */
     public tokenLength:number;
+
+    /**
+     * Get or set the length of the generated authorization codes.
+     */
+    public authorizationCodeLength:number;
 }

@@ -19,7 +19,7 @@ class FlowFactory {
      */
     public getFlow(type:string, data:any):IFlow {
         
-        let map:FlowTypeMap = this._flowTypeMapList.find(function(map) { return map.type == type });
+        let map:FlowTypeMap = this._flowTypeMapList.find(function(map:FlowTypeMap) { return map.type == type });
 
         if (!map)
             throw new Error('The type [' + type + '] dont have any asociated build function in the factory.');
@@ -34,7 +34,7 @@ class FlowFactory {
      */
     public setFlowTypeBuilder(type:string,  buildFunction:(data:any) => IFlow):void {
         
-        if (this._flowTypeMapList.find(function(map) { return map.type == type }))
+        if (this._flowTypeMapList.find(function(map:FlowTypeMap) { return map.type == type }))
             throw new Error('The type [' + type + '] already has a asociated build function in the factory.');
         
 
