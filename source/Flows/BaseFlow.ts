@@ -1,7 +1,7 @@
 import { IFlow } from './IFlow'
 import { IFlowHandler } from '../IFlowHandler'
 import { FlowError } from "../Models/FlowError";
-import { ICLientService } from "../Services/IClientService";
+import { IClientService } from "../Services/IClientService";
 
 /**
  * Represents a base class for the oAuth flows.
@@ -11,7 +11,7 @@ export abstract class BaseFlow implements IFlow {
      * Construct a new base flow [BaseFP] with the given type.
      * @param type Represents the type of the flow processor.
      */
-    constructor(type:string, clientService:ICLientService) {
+    constructor(type:string, clientService:IClientService) {
         this._type = type;        
     }
 
@@ -37,10 +37,10 @@ export abstract class BaseFlow implements IFlow {
 
         if (error) {
             handler.notifyError(error);
-            return true;
+            return true; // I resolve it;
         }
         else
-            return false;  
+            return false;  // I can not resolve it;
     };
 
     /**

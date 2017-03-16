@@ -1,19 +1,30 @@
 import { ScopeBaseFlow } from './ScopeBaseFlow'
 import { IFlowHandler } from '../IFlowHandler'
+import { IClientService } from "../Services/IClientService";
+import { IFlowResultBuilder } from "../IFlowResultBuilder";
 
 /**
  * Represents a authorization code flow.
  */
 export class AuthorizationCodeFlow extends ScopeBaseFlow {
-    constructor() {
-        super('authorization_code');
+
+    constructor(clientService:IClientService
+               ,flowResultBuilder:IFlowResultBuilder) {
+
+        super('authorization_code', clientService);
     }  
 
     /**
-     * Execute the flow and handle it with the given handler.
-     * @param handler Represents the handler for the flow.
+     * Execute the flow resolution and handle it with the given handler.
+     * @param handle Represents the handler.
      */
-    public execute(handler:IFlowHandler):void { 
-               
+    public async resolve(handler:IFlowHandler):Promise<boolean> {
+      
+        if (!super.resolve(handler) && await this._userService.validateCredentials(this.username, this.password)) {
+            handler.returnResult(await this._flowResultBuilder.getResult());
+        }
+        else
+            return false;
+
     }
 }

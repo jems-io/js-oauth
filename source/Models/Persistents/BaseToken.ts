@@ -12,4 +12,9 @@ export abstract class BaseToken {
      * The time in seconds to the token expiration.
      */
     public expireIn:number;
+
+    /**
+     * Get or set the creation date.
+     */
+    public creationDate:Date;
 }
