@@ -3,7 +3,7 @@
  */
 export interface IUserService {
     /**
-     * Get a boolean value specifying if the user credential are valid.
+     * Returns a boolean value specifying if the user credential are valid.
      * @param username Represents the user name.
      * @param password Represents the user password.
      */ 

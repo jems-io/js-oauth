@@ -19,7 +19,7 @@ export class TokenGenerationService implements ITokenGenerationService {
     }
 
     /**
-     * Get a new ramdom token value;
+     * Returns a new ramdom token value;
      */
     public async getTokenValue():Promise<string> {
         return randomstring.generate(this._oAuthContext.configuration.tokenLength | 20);

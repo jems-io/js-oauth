@@ -4,6 +4,9 @@ import { IFlowHandler } from '../IFlowHandler'
 import { Token } from "../Models/Persistents/Token";
 import { ITokenService } from "../Services/ITokenService";
 import { IUserService } from "../Services/IUserService";
+import { FlowError } from "../Models/FlowError";
+import { IFlowResultBuilder } from "../IFlowResultBuilder";
+import { IClientService } from "../Services/IClientService";
 
 
 /**
@@ -11,20 +14,25 @@ import { IUserService } from "../Services/IUserService";
  */
 export class PasswordFlow extends BaseFlow {
 
-    private _userService:IUserService;
-    private _tokenService:ITokenService;
+    private _userService:IUserService;    
+    private _clientService:IClientService;
+    private _flowResultBuilder:IFlowResultBuilder;
+
 
     /**
      * Create a new instance of password flow class.
-     * @param userService Represents a user service.
+     * @param userService Represents a user service used to authenticate the user. 
+     * @param clientService Represents a client service to perform some basic flow validations.
+     * @param flowResultBuilder Represents a builder to build results.
      */
-    constructor(userService:IUserService
-               ,tokenService:ITokenService) {
+    constructor(userService:IUserService               
+               ,clientService:IClientService
+               ,flowResultBuilder:IFlowResultBuilder) {
 
-        super('password');
+        super('password', clientService);
 
         this._userService = userService;
-        this._tokenService = tokenService;
+        this._clientService = clientService;
     }
 
     /**
@@ -37,25 +45,16 @@ export class PasswordFlow extends BaseFlow {
     public password:string;
 
      /**
-     * Execute the flow and handle it with the given handler.
-     * @param handler Represents the handler for the flow.
+     * Execute the flow resolution and handle it with the given handler.
+     * @param handle Represents the handler.
      */
-    public async execute(handler:IFlowHandler):Promise<void> {
-        try
-        {
-            if (await this._userService.validateCredential(this.username, this.password)) {
-                let token:Token = await this._tokenService.generateToken();
-                let result:FlowResult = new FlowResult();                
-                
-                result.accessToken = token.value;
-                result.expireIn = token.expireIn;
-                result.refreshToken = token.refreshToken ? token.refreshToken.value : null;
+    public async resolve(handler:IFlowHandler):Promise<boolean> {
+      
+        if (!super.resolve(handler) && await this._userService.validateCredentials(this.username, this.password)) {
+            handler.returnResult(await this._flowResultBuilder.getResult());
+        }
+        else
+            return false;
 
-                handler.returnResult(result);
-            }
-        }
-        catch(ex) {
-            handler.notifyError('');
-        }
     }
 }

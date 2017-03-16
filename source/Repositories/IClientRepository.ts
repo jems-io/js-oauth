@@ -1,14 +1,12 @@
 import { Client } from '../Models/Persistents/Client'
 
+/**
+ * Represents a client repository to persists clients.
+ */
 export interface IClientRepository {
-
-    getAll():Promise<Array<Client>>;
-
-    getList(name:string, limit:number, offset:number):Promise<Array<Client>>;
-    
-    getById(id:string):Promise<Client>;
-
-    save(client:Client):Promise<void>;
-
-    authenticate(clientId:string, clientSecret:string):Promise<boolean>;
+    /**
+     * Return a client instance by the given client id.
+     * @param clientId Represents the id of the client to look for.
+     */
+    getById(clientId:string):Promise<Client>;
 }

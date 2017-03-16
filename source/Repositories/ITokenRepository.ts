@@ -6,7 +6,7 @@ import { Token } from '../Models/Persistents/Token'
 export interface ITokenRepository { 
 
     /**
-     * Get a tokent instance by the given value.
+     * Returns a tokent instance by the given value.
      * @param value Represents the value to look for.
      */ 
     getByValue(value:string):Promise<Token>;

@@ -6,7 +6,7 @@ import { User } from '../Models/Persistents/User'
 export interface IUserRepository {
     
     /**
-     * Get an user instance by a given name.
+     * Returns an user instance by a given name.
      * @param username Represent the user name to look for.
      */
     getByName(username:string):Promise<User>;

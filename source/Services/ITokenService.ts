@@ -6,13 +6,13 @@ import { Token } from '../Models/Persistents/Token'
 export interface ITokenService {    
 
     /**
-     * Get a token intance by the given value.
+     * Returns a token intance by the given value.
      * @param tokenValue Represents the token value to look for.
      */
     getByValue(tokenValue:string):Promise<Token>;
 
     /**
-     * Get a new generated token.
+     * Returns a new generated token.
      */
     generateToken():Promise<Token>;    
 }

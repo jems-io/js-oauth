@@ -30,7 +30,7 @@ export class TokenService implements ITokenService {
     }
 
     /**
-     * Get a token intance by the given value.
+     * Returns a token intance by the given value.
      * @param tokenValue Represents the token value to look for.
      */
     public async getByValue(tokenValue:string):Promise<Token> {
@@ -38,7 +38,7 @@ export class TokenService implements ITokenService {
     }
 
     /**
-     * Get a new generated token.
+     * Returns a new generated token.
      */
     public async generateToken():Promise<Token> {
 

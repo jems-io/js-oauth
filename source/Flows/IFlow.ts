@@ -5,7 +5,8 @@ import { IFlowHandler } from '../IFlowHandler'
  */
 export interface IFlow {
     /**
-     * Execute the flow and handle it with the given handler.
+     * Execute the flow resolution and handle it with the given handler.
+     * @param handle Represents the handler.
      */
-    execute(handler:IFlowHandler):Promise<void>;
+    resolve(handler:IFlowHandler):Promise<boolean>;
 }

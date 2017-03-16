@@ -4,7 +4,7 @@
 export interface ITokenGenerationService {
 
     /**
-     * Get a new ramdom token value;
+     * Returns a new ramdom token value;
      */
     getTokenValue():Promise<string>;
 }
