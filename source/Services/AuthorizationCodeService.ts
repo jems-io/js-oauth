@@ -20,6 +20,14 @@ export class AuthorizationCodeService implements IAuthorizationCodeService {
     private _clientRepository:IClientRepository;
     private _identifierGenerationService:IIdentifierGenerationService;
     
+    /**
+     * Creates a new instance of authorization code service.
+     * @param authorizarionCodeRepository Represents a repository to persist and consult authorization codes.
+     * @param tokenRepository Represents a repository to persist and consult tokens.
+     * @param clientService Represents a client service to validate the clients.
+     * @param clientRepository Represents a repository to persist and consult clients.
+     * @param identifierGenerationService Represents a identifier generation service to generate codes.
+     */
     constructor(authorizarionCodeRepository:IAuthorizationCodeRepository
                ,tokenRepository:ITokenRepository
                ,clientService:IClientService

@@ -50,6 +50,12 @@ export abstract class ScopeBaseFlow extends BaseFlow {
      * If return null no error was found.
      */
     private async validate():Promise<FlowError> {
+
+        let error:FlowError = await super.validate();
+
+        if (error)
+            return error;
+
         return null;
     };
 }

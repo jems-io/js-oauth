@@ -66,7 +66,7 @@ export abstract class BaseFlow implements IFlow {
      * Return a flow error instance when a error is founded in the evaluated flow.
      * If return null no error was found.
      */
-    private async validate():Promise<FlowError> {
+    protected async validate():Promise<FlowError> {
         return null;
     };
 }
